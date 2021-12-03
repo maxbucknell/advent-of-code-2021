@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36E50E3C2758BF8A00093F59 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E50E3B2758BF8A00093F59 /* main.swift */; };
-		36E50E432758C24800093F59 /* day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E50E422758C24800093F59 /* day1.swift */; };
-		36E50E452758D00F00093F59 /* day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E50E442758D00F00093F59 /* day2.swift */; };
+		36E50E4C27597F6C00093F59 /* MBAdventKit2021 in Frameworks */ = {isa = PBXBuildFile; productRef = 36E50E4B27597F6C00093F59 /* MBAdventKit2021 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +24,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3618189627598D57000D18DF /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = AdventOfCode2021/Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		36E50E382758BF8A00093F59 /* AdventOfCode2021 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2021; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E50E3B2758BF8A00093F59 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		36E50E422758C24800093F59 /* day1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day1.swift; sourceTree = "<group>"; };
-		36E50E442758D00F00093F59 /* day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day2.swift; sourceTree = "<group>"; };
+		36E50E4A27597F6400093F59 /* MBAdventKit2021 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MBAdventKit2021; path = AdventOfCode2021/MBAdventKit2021; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E50E4C27597F6C00093F59 /* MBAdventKit2021 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +45,11 @@
 		36E50E2F2758BF8900093F59 = {
 			isa = PBXGroup;
 			children = (
+				3618189627598D57000D18DF /* Playground.playground */,
+				36E50E4A27597F6400093F59 /* MBAdventKit2021 */,
 				36E50E3A2758BF8A00093F59 /* AdventOfCode2021 */,
 				36E50E392758BF8A00093F59 /* Products */,
+				36E50E4727597EDC00093F59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,10 +65,15 @@
 			isa = PBXGroup;
 			children = (
 				36E50E3B2758BF8A00093F59 /* main.swift */,
-				36E50E422758C24800093F59 /* day1.swift */,
-				36E50E442758D00F00093F59 /* day2.swift */,
 			);
 			path = AdventOfCode2021;
+			sourceTree = "<group>";
+		};
+		36E50E4727597EDC00093F59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +92,9 @@
 			dependencies = (
 			);
 			name = AdventOfCode2021;
+			packageProductDependencies = (
+				36E50E4B27597F6C00093F59 /* MBAdventKit2021 */,
+			);
 			productName = AdventOfCode2021;
 			productReference = 36E50E382758BF8A00093F59 /* AdventOfCode2021 */;
 			productType = "com.apple.product-type.tool";
@@ -127,8 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				36E50E3C2758BF8A00093F59 /* main.swift in Sources */,
-				36E50E452758D00F00093F59 /* day2.swift in Sources */,
-				36E50E432758C24800093F59 /* day1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +303,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36E50E4B27597F6C00093F59 /* MBAdventKit2021 */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MBAdventKit2021;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 36E50E302758BF8900093F59 /* Project object */;
 }

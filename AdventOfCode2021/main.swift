@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MBAdventKit2021
 
 if (CommandLine.argc != 3) {
     fatalError("Expected two arguments: [date (1–21)] [puzzle A|B]")
@@ -14,28 +15,24 @@ if (CommandLine.argc != 3) {
 let date = CommandLine.arguments[1]
 let puzzle = CommandLine.arguments[2].uppercased()
 
-switch (date, puzzle) {
-case ("1", "A"):
-    print("Running first puzzle for 1/12")
-    print("-----------------------------")
-    print("")
-    print("Result: \(firstOfFirst())")
-    break
-case ("1", "B"):
-    print("Running second puzzle for 1/12")
-    print("------------------------------")
-    print("")
-    print("Result: \(secondOfFirst())")
-case ("2", "A"):
-    print("Running first puzzle for 2/12")
-    print("------------------------------")
-    print("")
-    print("Result: \(firstOfSecond())")
-case ("2", "B"):
-    print("Running second puzzle for 2/12")
-    print("------------------------------")
-    print("")
-    print("Result: \(secondOfSecond())")
-default:
-    fatalError("Puzzle not implemented yet")
+func getResult(date: String, puzzle: String) -> Int? {
+    switch (date, puzzle) {
+    case ("1", "A"):
+        return DayOneA<InputReader>().solve(input: InputReader())
+    case ("1", "B"):
+        return DayOneB<InputReader>().solve(input: InputReader())
+    case ("2", "A"):
+        return DayTwoA<InputReader>().solve(input: InputReader())
+    case ("2", "B"):
+        return DayTwoB<InputReader>().solve(input: InputReader())
+    default:
+        return nil
+    }
 }
+
+guard let result = getResult(date: date, puzzle: puzzle) else {
+    print("Puzzle \(date)\(puzzle) not implemented yet.")
+    exit(127)
+}
+
+print("Result for \(date)\(puzzle): \(result)")
