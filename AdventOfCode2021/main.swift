@@ -25,6 +25,10 @@ func getResult(date: String, puzzle: String) -> Int? {
         return DayTwoA<InputReader>().solve(input: InputReader())
     case ("2", "B"):
         return DayTwoB<InputReader>().solve(input: InputReader())
+    case ("3", "A"):
+        return DayThreeA<InputReader>().solve(input: InputReader())
+    case ("3", "B"):
+        return DayThreeB<InputReader>().solve(input: InputReader())
     default:
         return nil
     }
