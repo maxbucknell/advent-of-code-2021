@@ -13,11 +13,20 @@ public struct DayThreeA<S: Sequence>: Solution where S.Element == String {
     }
     
     public func solve(input: S) -> Int {
-        let binaryDiagnosticSequence = BinaryDiagnosticSequence(input: input)
+        let sequence = BinaryDiagnosticSequence(input: input)
+        var tree = BitwiseTree(value: 0x00)
         
-        let mostCommonBits = calculateMostCommonBitValuesInSequence(binaryDiagnosticSequence)
-        let gammaRate = calculateGammaRateFromMostCommonBits(mostCommonBits)
-        let epsilonRate = calculateEpsilonRateFromMostCommonBits(mostCommonBits)
+        for code in sequence {
+            tree.addElement(code)
+        }
+        
+        let mostCommonBits = tree.mostCommonBits
+        let gammaRate = mostCommonBits.reduce(0) { total, nextDigit in
+            return (total << 1) + nextDigit
+        }
+        let epsilonRate = mostCommonBits.reduce(0) { total, nextDigit in
+            return (total << 1) + (nextDigit ^ 1)
+        }
         
         return gammaRate * epsilonRate
     }

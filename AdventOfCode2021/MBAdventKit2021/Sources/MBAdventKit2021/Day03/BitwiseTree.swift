@@ -17,6 +17,24 @@ struct BitwiseTree {
         self.value = value
     }
     
+    init(byMergingTrees trees: [BitwiseTree], andValue value: Int) {
+        self.value = value
+        
+        let treesWithWeight = trees.filter { tree in tree.weight > 0 }
+        
+        if treesWithWeight.count == 0 {
+            return
+        }
+
+        self.weight = treesWithWeight.map({ tree in tree.weight }).reduce(0, +)
+        
+        let zeros = treesWithWeight.map { tree in tree[0x00] ?? BitwiseTree(value: 0x00) }
+        let ones = treesWithWeight.map { tree in tree[0x01] ?? BitwiseTree(value: 0x01) }
+        
+        self.nodes[0] = BitwiseTree(byMergingTrees: zeros, andValue: 0x00)
+        self.nodes[1] = BitwiseTree(byMergingTrees: ones, andValue: 0x01)
+    }
+    
     var heaviest: BitwiseTree? {
         let zero = nodes[0x00]
         let one = nodes[0x01]
@@ -63,6 +81,24 @@ struct BitwiseTree {
         return [lightest!.value] + lightest!.lightestPath
     }
     
+    var isLeaf: Bool {
+        let zeroWeight = nodes[0]?.weight ?? 0
+        let oneWeight = nodes[1]?.weight ?? 0
+        
+        return (zeroWeight + oneWeight) == 0
+    }
+    
+    var mostCommonBits: [Int] {
+        if isLeaf {
+            return []
+        }
+        
+        let left = nodes[0] ?? BitwiseTree(value: 0x00)
+        let right = nodes[1] ?? BitwiseTree(value: 0x01)
+        
+        return [heaviest!.value] + (left + right).mostCommonBits
+    }
+    
     subscript(value: Int) -> BitwiseTree? {
         switch value {
         case 0x00:
@@ -90,4 +126,9 @@ struct BitwiseTree {
         
         nodes[index]!.addElement(rest)
     }
+    
+    static func + (left: BitwiseTree, right: BitwiseTree) -> BitwiseTree {
+        return BitwiseTree(byMergingTrees: [left, right], andValue: 0x00)
+    }
 }
+
